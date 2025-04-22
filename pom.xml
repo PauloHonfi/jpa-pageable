@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.paulohonfi.postgre</groupId>
-	<artifactId>Paginable</artifactId>
+	<artifactId>paginable</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Paginable</name>
 	<description>Spring boot paginable consult</description>

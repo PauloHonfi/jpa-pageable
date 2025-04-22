@@ -1,0 +1,7 @@
+/home/paulo/dev/workspace/PHS/Santander/jpa-pageable/src/main/java/br/com/paulohonfi/postgre/PaginableApplication.java
+/home/paulo/dev/workspace/PHS/Santander/jpa-pageable/src/main/java/br/com/paulohonfi/postgre/app/resource/AccountResource.java
+/home/paulo/dev/workspace/PHS/Santander/jpa-pageable/src/main/java/br/com/paulohonfi/postgre/app/service/AccountService.java
+/home/paulo/dev/workspace/PHS/Santander/jpa-pageable/src/main/java/br/com/paulohonfi/postgre/domain/entity/Account.java
+/home/paulo/dev/workspace/PHS/Santander/jpa-pageable/src/main/java/br/com/paulohonfi/postgre/domain/usecase/AccountUseCase.java
+/home/paulo/dev/workspace/PHS/Santander/jpa-pageable/src/main/java/br/com/paulohonfi/postgre/domain/usecase/impl/AccountUseCaseImpl.java
+/home/paulo/dev/workspace/PHS/Santander/jpa-pageable/src/main/java/br/com/paulohonfi/postgre/infra/repository/AccountRepository.java

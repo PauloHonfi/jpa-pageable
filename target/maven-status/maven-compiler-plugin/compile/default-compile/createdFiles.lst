@@ -1,0 +1,7 @@
+br/com/paulohonfi/postgre/domain/entity/Account.class
+br/com/paulohonfi/postgre/infra/repository/AccountRepository.class
+br/com/paulohonfi/postgre/app/resource/AccountResource.class
+br/com/paulohonfi/postgre/domain/usecase/AccountUseCase.class
+br/com/paulohonfi/postgre/app/service/AccountService.class
+br/com/paulohonfi/postgre/PaginableApplication.class
+br/com/paulohonfi/postgre/domain/usecase/impl/AccountUseCaseImpl.class
