@@ -1,33 +1,41 @@
 package br.com.paulohonfi.postgre.app.service;
 
-import br.com.paulohonfi.postgre.domain.entity.Account;
+import br.com.paulohonfi.postgre.app.dto.AccountDTO;
+import br.com.paulohonfi.postgre.app.dto.AccountResponseDTO;
+import br.com.paulohonfi.postgre.app.dto.OffsetDTO;
+import br.com.paulohonfi.postgre.domain.model.mapper.AccountMapper;
+import br.com.paulohonfi.postgre.domain.model.mapper.AccountResponseMapper;
+import br.com.paulohonfi.postgre.domain.model.mapper.OffsetMapper;
 import br.com.paulohonfi.postgre.domain.usecase.AccountUseCase;
-import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AccountService {
 
     private final AccountUseCase useCase;
+    private final AccountResponseMapper mapper;
+    private final AccountMapper accountMapper;
+    private final OffsetMapper offsetMapper;
 
-    public List<Account> findAll() {
-        return useCase.findAll();
+    public AccountResponseDTO findAll() {
+        return mapper.toApp(useCase.findAll());
     }
 
-    public Page<Account> findAllPageable(final Pageable pageable) {
-        return useCase.findAllPageable(pageable);
+    public AccountResponseDTO findAllPageable(final OffsetDTO dto) {
+        return mapper.toApp(useCase.findAllPageable(offsetMapper.toDomain(dto)));
     }
 
-    public Account create(final Account account) {
-        return useCase.create(account);
+    public AccountResponseDTO create(final AccountDTO account) {
+        return mapper.toApp(useCase.create(accountMapper.toDomain(account)));
     }
 
-    public List<Account> createAll(final List<Account> accounts) {
-        return useCase.createAll(accounts);
+    public AccountResponseDTO createAll(final List<AccountDTO> accounts) {
+        return mapper.toApp(useCase.createAll(accounts.stream()
+                .map(accountMapper::toDomain)
+                .toList()));
     }
 }

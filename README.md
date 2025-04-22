@@ -6,7 +6,7 @@
     <li><b>Derrubar o container:</b> docker-compose down</li>
     <li><b>Build: </b> mvn clean package -Dmaven.test.skip=true</li>
     <li><b>Atualizar imagem:</b> docker build -t paginable-app .</li>
-    <li><b>Subir o container:</b> docker-compose up --build</li>
+    <li><b>Subir o container:</b> docker compose up -d</li>
 </ul>
 
 ## Spring Boot

@@ -1,11 +1,14 @@
 package br.com.paulohonfi.postgre.app.resource;
 
+import br.com.paulohonfi.postgre.app.dto.AccountDTO;
+import br.com.paulohonfi.postgre.app.dto.AccountResponseDTO;
+import br.com.paulohonfi.postgre.app.dto.OffsetDTO;
 import br.com.paulohonfi.postgre.app.service.AccountService;
-import br.com.paulohonfi.postgre.domain.entity.Account;
+import br.com.paulohonfi.postgre.domain.model.entity.Account;
+import br.com.paulohonfi.postgre.domain.model.mapper.AccountMapper;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,32 +17,32 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/account")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AccountResource {
 
     private final AccountService service;
 
     @GetMapping
-    public ResponseEntity<List<Account>> findAll() {
+    public ResponseEntity<AccountResponseDTO> findAll() {
         log.info("Consultando todos os registros de conta");
         return ResponseEntity.ok().body(service.findAll());
     }
 
-    @GetMapping("/paged")
-    public ResponseEntity<Page<Account>> findAll(final Pageable pageable) {
+    @PostMapping("/paged")
+    public ResponseEntity<AccountResponseDTO> findAll(@RequestBody final OffsetDTO dto) {
         log.info("Consultando registros de conta com paginação");
-        return ResponseEntity.ok().body(service.findAllPageable(pageable));
+        return ResponseEntity.ok().body(service.findAllPageable(dto));
     }
 
     @PostMapping
-    public ResponseEntity<Account> create(@RequestBody final Account account) {
+    public ResponseEntity<AccountResponseDTO> create(@RequestBody final AccountDTO account) {
         log.info("Criando um novo registro de conta");
         return ResponseEntity.ok().body(service.create(account));
     }
 
     @PostMapping("/all")
-    public ResponseEntity<List<Account>> createAll(@RequestBody final List<Account> account) {
+    public ResponseEntity<AccountResponseDTO> createAll(@RequestBody final List<AccountDTO> accounts) {
         log.info("Criando registro de conta em lote");
-        return ResponseEntity.ok().body(service.createAll(account));
+        return ResponseEntity.ok().body(service.createAll(accounts));
     }
 }

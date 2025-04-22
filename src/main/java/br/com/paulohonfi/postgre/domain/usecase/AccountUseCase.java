@@ -1,8 +1,8 @@
 package br.com.paulohonfi.postgre.domain.usecase;
 
-import br.com.paulohonfi.postgre.domain.entity.Account;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import br.com.paulohonfi.postgre.domain.model.AccountResponse;
+import br.com.paulohonfi.postgre.domain.model.Offset;
+import br.com.paulohonfi.postgre.domain.model.entity.Account;
 
 import java.util.List;
 
@@ -13,15 +13,15 @@ public interface AccountUseCase {
      *
      * @return a list of Account objects
      */
-    public List<Account> findAll();
+    public AccountResponse findAll();
 
     /**
      * Retrieve all accounts with pagination.
      *
-     * @param pageable the pagination information
-     * @return a paginated list of Account objects
+     * @param offset the Offset object containing pagination information
+     * @return a list of Account objects
      */
-    public Page<Account> findAllPageable(final Pageable pageable);
+    public AccountResponse findAllPageable(final Offset offset);
 
     /**
      * Create a new account.
@@ -29,7 +29,7 @@ public interface AccountUseCase {
      * @param account the Account object to be created
      * @return a ResponseEntity containing the created Account object
      */
-    public Account create(final Account account);
+    public AccountResponse create(final Account account);
 
     /**
      * Create multiple accounts.
@@ -37,5 +37,5 @@ public interface AccountUseCase {
      * @param accounts a list of Account objects to be created
      * @return a list of created Account objects
      */
-    public List<Account> createAll(final List<Account> accounts);
+    public AccountResponse createAll(final List<Account> accounts);
 }

@@ -1,43 +1,40 @@
 package br.com.paulohonfi.postgre.domain.usecase.impl;
 
-import br.com.paulohonfi.postgre.domain.entity.Account;
+import br.com.paulohonfi.postgre.domain.model.AccountResponse;
+import br.com.paulohonfi.postgre.domain.model.Offset;
+import br.com.paulohonfi.postgre.domain.model.entity.Account;
 import br.com.paulohonfi.postgre.domain.usecase.AccountUseCase;
-import br.com.paulohonfi.postgre.infra.repository.AccountRepository;
-import lombok.AllArgsConstructor;
+import br.com.paulohonfi.postgre.infra.dataprovider.AccountDataProvider;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Slf4j
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AccountUseCaseImpl implements AccountUseCase {
 
-    private final AccountRepository repository;
+    private final AccountDataProvider dataProvider;
 
     @Override
-    public List<Account> findAll() {
-        log.info("Recuperando todos os registros de conta do banco");
-        return repository.findAll();
+    public AccountResponse findAll() {
+        return dataProvider.findAll();
     }
 
     @Override
-    public Page<Account> findAllPageable(final Pageable pageable) {
-        return repository.findAll(pageable);
+    public AccountResponse findAllPageable(final Offset offset) {
+        return dataProvider.findAllPageable(offset);
     }
 
     @Override
-    public Account create(final Account account) {
-        log.info("Criando um novo registro de conta no banco");
-        return repository.save(account);
+    public AccountResponse create(final Account account) {
+        return dataProvider.create(account);
     }
 
     @Override
-    public List<Account> createAll(List<Account> accounts) {
-        log.info("Criando registros de conta em lote no banco");
-        return repository.saveAll(accounts);
+    public AccountResponse createAll(List<Account> accounts) {
+        return dataProvider.createAll(accounts);
     }
 }
