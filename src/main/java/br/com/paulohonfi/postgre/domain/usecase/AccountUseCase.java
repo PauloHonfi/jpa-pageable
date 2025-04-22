@@ -1,6 +1,8 @@
 package br.com.paulohonfi.postgre.domain.usecase;
 
 import br.com.paulohonfi.postgre.domain.entity.Account;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -12,6 +14,14 @@ public interface AccountUseCase {
      * @return a list of Account objects
      */
     public List<Account> findAll();
+
+    /**
+     * Retrieve all accounts with pagination.
+     *
+     * @param pageable the pagination information
+     * @return a paginated list of Account objects
+     */
+    public Page<Account> findAllPageable(final Pageable pageable);
 
     /**
      * Create a new account.

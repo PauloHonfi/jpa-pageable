@@ -5,6 +5,8 @@ import br.com.paulohonfi.postgre.domain.usecase.AccountUseCase;
 import br.com.paulohonfi.postgre.infra.repository.AccountRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +22,11 @@ public class AccountUseCaseImpl implements AccountUseCase {
     public List<Account> findAll() {
         log.info("Recuperando todos os registros de conta do banco");
         return repository.findAll();
+    }
+
+    @Override
+    public Page<Account> findAllPageable(final Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @Override
