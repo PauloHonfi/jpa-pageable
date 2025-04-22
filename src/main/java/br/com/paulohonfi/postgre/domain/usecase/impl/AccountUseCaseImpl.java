@@ -27,4 +27,10 @@ public class AccountUseCaseImpl implements AccountUseCase {
         log.info("Criando um novo registro de conta no banco");
         return repository.save(account);
     }
+
+    @Override
+    public List<Account> createAll(List<Account> accounts) {
+        log.info("Criando registros de conta em lote no banco");
+        return repository.saveAll(accounts);
+    }
 }

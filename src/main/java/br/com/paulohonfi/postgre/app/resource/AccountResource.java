@@ -28,4 +28,10 @@ public class AccountResource {
         log.info("Criando um novo registro de conta");
         return ResponseEntity.ok().body(service.create(account));
     }
+
+    @PostMapping("/all")
+    public ResponseEntity<List<Account>> createAll(@RequestBody final List<Account> account) {
+        log.info("Criando registro de conta em lote");
+        return ResponseEntity.ok().body(service.createAll(account));
+    }
 }

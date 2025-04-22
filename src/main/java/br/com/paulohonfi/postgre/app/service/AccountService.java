@@ -20,4 +20,8 @@ public class AccountService {
     public Account create(final Account account) {
         return useCase.create(account);
     }
+
+    public List<Account> createAll(final List<Account> accounts) {
+        return useCase.createAll(accounts);
+    }
 }

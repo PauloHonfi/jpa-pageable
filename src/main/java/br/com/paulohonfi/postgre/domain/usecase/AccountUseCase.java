@@ -20,4 +20,12 @@ public interface AccountUseCase {
      * @return a ResponseEntity containing the created Account object
      */
     public Account create(final Account account);
+
+    /**
+     * Create multiple accounts.
+     *
+     * @param accounts a list of Account objects to be created
+     * @return a list of created Account objects
+     */
+    public List<Account> createAll(final List<Account> accounts);
 }
