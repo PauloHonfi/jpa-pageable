@@ -48,7 +48,6 @@ public class AccountDataProviderImpl implements AccountDataProvider {
         if (accounts != null && !accounts.isEmpty()) {
             log.info("Registros de conta com paginação recuperados com sucesso");
 
-
             response = AccountResponse.builder()
                     .warning(Warning.builder().code("SUCCESS")
                             .message(getWarningMessage(accounts)).build())
